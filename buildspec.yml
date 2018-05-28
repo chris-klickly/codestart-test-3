@@ -8,6 +8,7 @@ phases:
 
       # Upgrade AWS CLI to the latest version
       - pip install --upgrade awscli
+      - pip install awsebcli --upgrade --user
   pre_build:
     commands:
       # Discover and run unit tests in the 'tests' directory
@@ -15,12 +16,11 @@ phases:
   post_build:
     commands:
       # Remove existing node_modules to clear dev dependencies
-      - pip install awsebcli --upgrade --user
       - rm -r node_modules
 
       # Install runtime dependencies
       - npm install --production
-      - eb create 
+      - ebp init
 artifacts:
   type: zip
   files:
