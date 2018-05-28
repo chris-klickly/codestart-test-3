@@ -15,11 +15,12 @@ phases:
   post_build:
     commands:
       # Remove existing node_modules to clear dev dependencies
+      - pip install awsebcli --upgrade --user
       - rm -r node_modules
 
       # Install runtime dependencies
       - npm install --production
-      - eb init
+      - eb create
 artifacts:
   type: zip
   files:
