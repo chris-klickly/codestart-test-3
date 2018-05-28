@@ -20,7 +20,6 @@ phases:
 
       # Install runtime dependencies
       - npm install --production
-      - ebp init
 artifacts:
   type: zip
   files:
